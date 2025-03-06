@@ -23,12 +23,12 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/prometheus-community/windows_exporter/internal/exporter"
 	"github.com/prometheus-community/windows_exporter/pkg/collector"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/collectors"
 	"github.com/prometheus/client_golang/prometheus/collectors/version"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	gpuexp "github.com/utkuozdemir/nvidia_gpu_exporter/internal/exporter"
 )
 
 // Interface guard.
@@ -137,7 +137,7 @@ func (c *MetricsHTTPHandler) handlerFactory(logger *slog.Logger, scrapeTimeout t
 		return nil, fmt.Errorf("couldn't register Prometheus collector: %w", err)
 	}
 
-	exp, err := gpuexp.New(context.Background(), gpuexp.DefaultPrefix, gpuexp.DefaultNvidiaSmiCommand, gpuexp.DefaultQField, logger)
+	exp, err := exporter.New(context.Background(), exporter.DefaultPrefix, exporter.DefaultNvidiaSmiCommand, exporter.DefaultQField, logger)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create exporter: %w", err)
 	}
