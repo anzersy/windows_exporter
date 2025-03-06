@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/utkuozdemir/nvidia_gpu_exporter/internal/exporter"
+	"github.com/prometheus-community/windows_exporter/internal/exporter"
 )
 
 const testCsv = `

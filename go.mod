@@ -10,12 +10,12 @@ require (
 	github.com/bmatcuk/doublestar/v4 v4.8.1
 	github.com/dimchansky/utfbom v1.1.1
 	github.com/go-ole/go-ole v1.3.0
+	github.com/neilotoole/slogt v1.1.0
 	github.com/prometheus/client_golang v1.21.0
 	github.com/prometheus/client_model v0.6.1
 	github.com/prometheus/common v0.62.0
 	github.com/prometheus/exporter-toolkit v0.14.0
 	github.com/stretchr/testify v1.10.0
-	github.com/utkuozdemir/nvidia_gpu_exporter v1.3.0
 	golang.org/x/sys v0.30.0
 	gopkg.in/yaml.v3 v3.0.1
 )

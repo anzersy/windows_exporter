@@ -16,7 +16,7 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 
-	"github.com/utkuozdemir/nvidia_gpu_exporter/internal/util"
+	"github.com/prometheus-community/windows_exporter/internal/util"
 )
 
 // QField stands for query field - the field name before the query.

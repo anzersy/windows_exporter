@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/utkuozdemir/nvidia_gpu_exporter/internal/util"
+	"github.com/prometheus-community/windows_exporter/internal/util"
 )
 
 func TestToSnakeCase(t *testing.T) {
