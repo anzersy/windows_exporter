@@ -357,6 +357,15 @@ func BuildQFieldToMetricInfoMap(prefix string, qFieldtoRFieldMap map[QField]RFie
 
 func BuildMetricInfo(prefix string, rField RField) MetricInfo {
 	fqName, multiplier := BuildFQNameAndMultiplier(prefix, rField)
+	// adapt to DCGM metric name
+	if fqName == "nvidia_smi_utilization_gpu_ratio" {
+		fqName = "DCGM_FI_DEV_GPU_UTIL"
+	}
+
+	if fqName == "nvidia_smi_utilization_memory_ratio" {
+		fqName = "DCGM_FI_DEV_MEM_COPY_UTIL"
+	}
+
 	desc := prometheus.NewDesc(fqName, string(rField), []string{"uuid"}, nil)
 
 	return MetricInfo{
