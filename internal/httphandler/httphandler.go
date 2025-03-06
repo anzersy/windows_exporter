@@ -16,6 +16,7 @@
 package httphandler
 
 import (
+	"context"
 	"fmt"
 	"log/slog"
 	"net/http"
@@ -27,6 +28,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/collectors"
 	"github.com/prometheus/client_golang/prometheus/collectors/version"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	gpuexp "github.com/utkuozdemir/nvidia_gpu_exporter/internal/exporter"
 )
 
 // Interface guard.
@@ -132,6 +134,15 @@ func (c *MetricsHTTPHandler) handlerFactory(logger *slog.Logger, scrapeTimeout t
 	}
 
 	if err := reg.Register(collectionHandler); err != nil {
+		return nil, fmt.Errorf("couldn't register Prometheus collector: %w", err)
+	}
+
+	exp, err := gpuexp.New(context.Background(), gpuexp.DefaultPrefix, gpuexp.DefaultNvidiaSmiCommand, gpuexp.DefaultQField, logger)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create exporter: %w", err)
+	}
+
+	if err := reg.Register(exp); err != nil {
 		return nil, fmt.Errorf("couldn't register Prometheus collector: %w", err)
 	}
 

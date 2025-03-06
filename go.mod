@@ -1,6 +1,8 @@
 module github.com/prometheus-community/windows_exporter
 
-go 1.23
+go 1.23.4
+
+toolchain go1.23.7
 
 require (
 	github.com/Microsoft/hcsshim v0.12.9
@@ -13,6 +15,7 @@ require (
 	github.com/prometheus/common v0.62.0
 	github.com/prometheus/exporter-toolkit v0.14.0
 	github.com/stretchr/testify v1.10.0
+	github.com/utkuozdemir/nvidia_gpu_exporter v1.3.0
 	golang.org/x/sys v0.30.0
 	gopkg.in/yaml.v3 v3.0.1
 )
